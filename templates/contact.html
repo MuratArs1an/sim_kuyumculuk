@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İletişim - Sim Kuyumculuk</title>
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #93a3b8;
+      --accent: #f59e0b;
+      --text: #e6eef8;
+      --radius: 14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #071226 0%, #081426 100%);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    .nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(11,17,30,0.7), rgba(11,17,30,0.35));
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      z-index: 50;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand .logo {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+    }
+    .brand .logo img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+    .brand .title {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text);
+    }
+    .brand .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* İçerik */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .contact-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .contact-card h2 {
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .contact-item {
+      margin: 20px 0;
+    }
+
+    .contact-item a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .contact-item a:hover {
+      color: var(--accent);
+    }
+
+    .instagram {
+      margin-bottom: 16px;
+    }
+    .instagram img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.2s ease;
+    }
+    .instagram img:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo">
+          <img src="/static/sim-icon.png" alt="Sim Kuyumculuk">
+        </div>
+        <div>
+          <div class="title">Sim Kuyumculuk</div>
+          <div class="subtitle">Altında Güvenin Adı</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="/" class="">Ana Sayfa</a>
+        <a href="/contact.html" class="active">İletişim</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="contact-card">
+      <h2>İletişim Bilgilerimiz</h2>
+
+      <div class="contact-item instagram">
+        <a href="https://www.instagram.com/simkuyumculuk/" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <strong>Adres:</strong><br>
+        Mustafa Kemal Mahallesi Fatih Caddesi No:21/A Sincan / ANKARA
+      </div>
+
+      <div class="contact-item">
+        <strong>Telefon:</strong><br>
+        <a href="tel:+903123456789">0543 659 55 66</a>
+        <br>
+        <a href="tel:+903123456789">0312 277 45 61</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Sim Kuyumculuk. Tüm hakları saklıdır.
+  </footer>
+</body>
+</html>

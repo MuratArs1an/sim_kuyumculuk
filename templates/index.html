@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sim Kuyumculuk — Altın Fiyatları</title>
+    <style>
+    :root {
+        --bg1: #071226;
+        --bg2: #081426;
+        --card: #0b1220;
+        --muted: #93a3b8;
+        --accent: #f59e0b; /* altın vurgu */
+        --text: #e6eef8;
+        --radius: 14px;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial;
+    }
+      * {
+        box-sizing: border-box;
+    }
+    html,
+    body {
+        height: 100%;
+    }
+    body {
+        margin: 0;
+        background: linear-gradient(
+          180deg,
+          var(--bg1) 0%,
+          #071322 40%,
+          var(--bg2) 100%
+        );
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding-bottom: 40px;
+      }
+
+      /* NAV */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(6px);
+        background: linear-gradient(
+          180deg,
+          rgba(11, 17, 30, 0.6),
+          rgba(11, 17, 30, 0.35)
+        );
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 18px 20px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .brand .logo {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent; /* 🔥 Saydam arka plan */
+        border: none; /* veya dilersen bu satırı da kaldır */
+      }
+      .brand .logo img {
+        height: 120px;
+        width: auto;
+        display: block;
+      }
+      .brand .title {
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--text);
+      }
+      .brand .subtitle {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      .nav-links {
+        margin-left: auto;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-size: 14px;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      /* Container */
+      .container {
+        max-width: 1100px;
+        margin: 28px auto;
+        padding: 0 20px;
+      }
+
+      /* Card */
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        border-radius: var(--radius);
+        padding: 20px;
+        box-shadow: 0 8px 30px rgba(2, 6, 23, 0.5);
+        overflow: hidden;
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .card-title h1 {
+        margin: 0;
+        font-size: 18px;
+      }
+      .card-title p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .updated {
+        color: var(--muted);
+        font-size: 13px;
+        text-align: right;
+      }
+
+      /* Table */
+      .table-wrap {
+        margin-top: 18px;
+        overflow: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 700px;
+      }
+      thead tr {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+      }
+      th,
+      td {
+        padding: 16px 14px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        font-size: 15px;
+      }
+      th {
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 13px;
+      }
+      .type-cell {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .price {
+        font-weight: 800;
+        color: var(--text);
+      }
+      .price small {
+        display: block;
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 12px;
+        margin-top: 6px;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      tbody tr:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.01),
+          rgba(255, 255, 255, 0.005)
+        );
+      }
+
+      @media (max-width: 820px) {
+        .brand .title {
+          font-size: 16px;
+        }
+        table {
+          min-width: 640px;
+        }
+      }
+      @media (max-width: 560px) {
+        .nav-inner {
+          padding: 10px;
+        }
+        th,
+        td {
+          padding: 10px;
+        }
+        .card {
+          padding: 14px;
+        }
+      }
+
+      .footer {
+        text-align: center;
+        color: var(--muted);
+        padding: 14px;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" role="navigation">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <img
+              src="/static/sim-icon.png"
+              alt="Sim Kuyumculuk"
+              onerror="this.style.display='none'"
+            />
+          </div>
+          <div>
+            <div class="title">Sim Kuyumculuk</div>
+            <div class="subtitle">Yenikent / Sincan</div>
+          </div>
+        </div>
+
+        <div class="nav-links" role="menubar">
+          <a href="#">Ana Sayfa</a>
+          <a href="/contact" class="active">İletişim</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="card" aria-labelledby="card-title">
+        <div class="card-header">
+          <div class="card-title">
+            <h1 id="card-title">Altın Alış / Satış Fiyatları</h1>
+            <p>Gram ve Cumhuriyet altını dahil — fiyatlar TL cinsindendir</p>
+          </div>
+          <div class="updated">
+            Son güncelleme: <span id="updated-at">--:--:--</span>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table aria-describedby="card-title" id="prices-table">
+            <thead>
+              <tr>
+                <th>Ürün</th>
+                <th>Alış (TL)</th>
+                <th>Satış (TL)</th>
+              </tr>
+            </thead>
+            <tbody id="prices-body">
+              <tr>
+                <td colspan="3" class="muted">Yükleniyor...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div class="footer">© 2025 Sim Kuyumculuk</div>
+
+    <script>
+      const API_ENDPOINT = "/api/gold"; // backend endpoint
+      const REFRESH_MS = 60000; // 60s
+
+      function formatTLString(s) {
+        // s önceden backend tarafından biçimlendirilmiş '2.095,40' gibi string döner
+        return s;
+      }
+
+      function renderRows(data) {
+        const rows = data.map((item) => {
+          const short = (item.name || item.urun || "").split(" ")[0] || "—";
+          const buy = item.buy || item.alis || "—";
+          const sell = item.sell || item.satis || "—";
+          
+          return `
+          <tr>
+            <td>
+              <div class="type-cell">
+                <div>
+                  <div style="font-weight:700">${
+                    item.name || item.urun || "—"
+                  }</div>
+                </div>
+              </div>
+            </td>
+            <td><div class="price">${formatTLString(buy)}</div></td>
+<td><div class="price">${formatTLString(sell)}</div></td>
+
+          </tr>
+        `;
+        });
+        document.getElementById("prices-body").innerHTML = rows.join("\n");
+        document.getElementById("updated-at").textContent =
+          new Date().toLocaleString("tr-TR");
+      }
+
+      async function fetchAndUpdate() {
+        try {
+          const res = await fetch(API_ENDPOINT, { cache: "no-store" });
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          const json = await res.json();
+          if (json.error) {
+            document.getElementById(
+              "prices-body"
+            ).innerHTML = `<tr><td colspan="3" class="muted">${json.error}</td></tr>`;
+            return;
+          }
+          renderRows(json);
+        } catch (err) {
+          document.getElementById(
+            "prices-body"
+          ).innerHTML = `<tr><td colspan="3" class="muted">Veri alınırken hata: ${err.message}</td></tr>`;
+        }
+      }
+
+      // ilk yükle ve periyodik yenile
+      fetchAndUpdate();
+      setInterval(fetchAndUpdate, REFRESH_MS);
+    </script>
+  </body>
+</html>
