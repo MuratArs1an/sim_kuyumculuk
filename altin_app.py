@@ -82,7 +82,7 @@ def gold_prices():
         data.append({
             "urun": temiz(e_yarim.get("code", "E. Yarım")),
             "alis": f"{float(e_yarim.get('alis', 0)) * gram_alis:,.2f}",
-            "satis": f"{float(e_yarim.get('satis', 0)) * gram_satis + 20:,.2f}"
+            "satis": f"{float(e_yarim.get('satis', 0)) * gram_satis + 40:,.2f}"
         })
 
         # E. Teklik
@@ -90,7 +90,7 @@ def gold_prices():
         data.append({
             "urun": temiz(e_teklik.get("code", "E. Teklik")),
             "alis": f"{float(e_teklik.get('alis', 0)) * gram_alis:,.2f}",
-            "satis": f"{float(e_teklik.get('satis', 0)) * gram_satis + 20:,.2f}"
+            "satis": f"{float(e_teklik.get('satis', 0)) * gram_satis + 80:,.2f}"
         })
 
         # E. Ata Lira (+100 TL)
@@ -118,3 +118,4 @@ def gold_prices():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
