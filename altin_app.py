@@ -65,7 +65,7 @@ def gold_prices():
         # 24 Ayar
         data.append({
             "urun": "Gram Altın (24 Ayar)",
-            "alis": f"{gram_alis * 1.004:,.2f}",
+            "alis": f"{gram_alis * 0.995:,.2f}",
             "satis": f"{gram_satis * 1.004+10:,.2f}"
         })
 
@@ -105,7 +105,7 @@ def gold_prices():
         data.append({
             "urun": "22 Ayar Hurda Bilezik",
             "alis": f"{gram_alis * 0.912:,.2f}",
-            "satis": f"{gram_satis * 0.912:,.2f}"
+            "satis": f"{gram_satis * 0.912+10:,.2f}"
         })
 
         return jsonify(data)
@@ -118,4 +118,5 @@ def gold_prices():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
