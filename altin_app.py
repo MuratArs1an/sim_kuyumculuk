@@ -1,3 +1,4 @@
+
 from flask import Flask, jsonify, render_template
 import requests
 
@@ -104,7 +105,7 @@ def gold_prices():
         # Hurda 22 Ayar (ALTIN * 0.912)
         data.append({
             "urun": "22 Ayar Hurda Bilezik",
-            "alis": f"{gram_alis * 0.912:,.2f}",
+            "alis": f"{gram_alis * 0.912-3:,.2f}",
             "satis": f"{gram_satis * 0.912+10:,.2f}"
         })
 
