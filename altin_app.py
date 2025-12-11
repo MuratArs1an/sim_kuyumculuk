@@ -75,7 +75,7 @@ def gold_prices():
         data.append({
             "urun": temiz(e_ceyrek.get("code", "E. Çeyrek")),
             "alis": f"{float(e_ceyrek.get('alis', 0)) * gram_alis:,.2f}",
-            "satis": f"{float(e_ceyrek.get('satis', 0)) * gram_satis + 20:,.2f}"
+            "satis": f"{float(e_ceyrek.get('satis', 0)) * gram_satis + 10:,.2f}"
         })
 
         # E. Yarım
@@ -83,7 +83,7 @@ def gold_prices():
         data.append({
             "urun": temiz(e_yarim.get("code", "E. Yarım")),
             "alis": f"{float(e_yarim.get('alis', 0)) * gram_alis:,.2f}",
-            "satis": f"{float(e_yarim.get('satis', 0)) * gram_satis + 40:,.2f}"
+            "satis": f"{float(e_yarim.get('satis', 0)) * gram_satis + 20:,.2f}"
         })
 
         # E. Teklik
@@ -91,14 +91,14 @@ def gold_prices():
         data.append({
             "urun": temiz(e_teklik.get("code", "E. Teklik")),
             "alis": f"{float(e_teklik.get('alis', 0)) * gram_alis:,.2f}",
-            "satis": f"{float(e_teklik.get('satis', 0)) * gram_satis + 80:,.2f}"
+            "satis": f"{float(e_teklik.get('satis', 0)) * gram_satis + 40:,.2f}"
         })
 
         # E. Ata Lira (+100 TL)
         e_ata = sarrafiye_data.get("stl10", {})
         data.append({
             "urun": temiz(e_ata.get("code", "E. Ata Lira")),
-            "alis": f"{float(e_ata.get('alis', 0)) * gram_alis:,.2f}",
+            "alis": f"{float(e_ata.get('alis', 0)) * gram_alis-50:,.2f}",
             "satis": f"{float(e_ata.get('satis', 0)) * gram_satis + 100:,.2f}"
         })
 
@@ -119,5 +119,6 @@ def gold_prices():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
