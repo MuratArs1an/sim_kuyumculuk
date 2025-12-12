@@ -38,6 +38,10 @@ def fetch_json(url, headers, timeout=8):
 _CACHE = {"ts": 0, "data": None}
 CACHE_SECONDS = 30
 
+@app.route("/routes")
+def routes():
+    return jsonify(sorted([r.rule for r in app.url_map.iter_rules()])), 200
+
 @app.route("/api/gold")
 def gold_prices():
     global _CACHE
@@ -121,6 +125,7 @@ def gold_prices():
         # JSON değil / beklenmeyen format vb.
         print("Gold endpoint error:", repr(e))
         return jsonify({"error": "Upstream veri formatı hatası", "detail": str(e)}), 502
+
 
 
 
