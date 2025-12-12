@@ -37,6 +37,14 @@ def fetch_json(url, headers, timeout=8):
 # Basit cache: OzanDöviz’i yormaz, Render’da da stabil olur
 _CACHE = {"ts": 0, "data": None}
 CACHE_SECONDS = 30
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 
 @app.route("/routes")
 def routes():
@@ -125,6 +133,7 @@ def gold_prices():
         # JSON değil / beklenmeyen format vb.
         print("Gold endpoint error:", repr(e))
         return jsonify({"error": "Upstream veri formatı hatası", "detail": str(e)}), 502
+
 
 
 
