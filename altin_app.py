@@ -1,5 +1,10 @@
 
 from flask import Flask, jsonify, render_template
+import socket
+import urllib3.util.connection
+
+urllib3.util.connection.allowed_gai_family = lambda: socket.AF_INET
+
 import requests
 import time
 import os
@@ -133,6 +138,7 @@ def gold_prices():
         # JSON değil / beklenmeyen format vb.
         print("Gold endpoint error:", repr(e))
         return jsonify({"error": "Upstream veri formatı hatası", "detail": str(e)}), 502
+
 
 
 
