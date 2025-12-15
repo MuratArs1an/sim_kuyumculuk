@@ -134,11 +134,8 @@ def gold_prices():
         print("Gold endpoint error:", repr(e))
         return jsonify({"error": "Upstream veri formatı hatası", "detail": str(e)}), 502
 
-    except requests.exceptions.ReadTimeout as e:
-    print("OzanDoviz timeout:", repr(e))
-    if _CACHE["data"] is not None:
-        return jsonify({"stale": True, "data": _CACHE["data"]}), 200
-    return jsonify({"error": "Upstream timeout"}), 502
+
+
 
 
 
