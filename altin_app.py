@@ -66,7 +66,7 @@ def gold_prices():
 
     try:
         main_url = "https://ozandoviz.com/mainpagedataredis.php"
-        main_json = fetch_json(main_url, headers=headers, timeout=8)
+        main_json = fetch_json(main_url, headers=headers, timeout=15)
         main_data = (main_json or {}).get("data", {}) or {}
 
         altin_info = main_data.get("ALTIN", {}) or {}
@@ -78,7 +78,7 @@ def gold_prices():
         ons_satis = safe_float(ons_info.get("satis"))
 
         sarrafiye_url = "https://ozandoviz.com/sarrafiyehaspagedataredis.php"
-        sar_json = fetch_json(sarrafiye_url, headers=headers, timeout=8)
+        sar_json = fetch_json(sarrafiye_url, headers=headers, timeout=15)
         sar_data = (sar_json or {}).get("data", {}) or {}
 
         def temiz(ad):
@@ -133,6 +133,13 @@ def gold_prices():
         # JSON değil / beklenmeyen format vb.
         print("Gold endpoint error:", repr(e))
         return jsonify({"error": "Upstream veri formatı hatası", "detail": str(e)}), 502
+
+    except requests.exceptions.ReadTimeout as e:
+    print("OzanDoviz timeout:", repr(e))
+    if _CACHE["data"] is not None:
+        return jsonify({"stale": True, "data": _CACHE["data"]}), 200
+    return jsonify({"error": "Upstream timeout"}), 502
+
 
 
 
