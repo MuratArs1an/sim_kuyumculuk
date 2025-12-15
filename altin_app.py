@@ -23,7 +23,7 @@ def safe_float(val, default=0.0):
     except (TypeError, ValueError):
         return default
 
-def fetch_json(url, headers, timeout=8):
+def fetch_json(url, headers, timeout=15):
     r = requests.get(url, headers=headers, timeout=timeout)
     r.raise_for_status()
 
@@ -36,7 +36,7 @@ def fetch_json(url, headers, timeout=8):
 
 # Basit cache: OzanDöviz’i yormaz, Render’da da stabil olur
 _CACHE = {"ts": 0, "data": None}
-CACHE_SECONDS = 30
+CACHE_SECONDS = 180
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -133,6 +133,7 @@ def gold_prices():
         # JSON değil / beklenmeyen format vb.
         print("Gold endpoint error:", repr(e))
         return jsonify({"error": "Upstream veri formatı hatası", "detail": str(e)}), 502
+
 
 
 
