@@ -100,7 +100,7 @@ def gold_prices():
                      "satis": f"{gram_satis:,.2f}"})
 
         data.append({"urun": "Gram Altın (24 Ayar)",
-                     "alis": f"{gram_alis * 0.995:,.2f}",
+                     "alis": f"{gram_alis * 0.995-10:,.2f}",
                      "satis": f"{gram_satis * 1.004 + 10:,.2f}"})
 
         def sar_item(key, fallback_name, satis_ek=0, alis_ek=0):
@@ -138,6 +138,7 @@ def gold_prices():
         # JSON değil / beklenmeyen format vb.
         print("Gold endpoint error:", repr(e))
         return jsonify({"error": "Upstream veri formatı hatası", "detail": str(e)}), 502
+
 
 
 
