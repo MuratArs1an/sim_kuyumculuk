@@ -114,9 +114,9 @@ def gold_prices():
                 "satis": f"{(satis_katsayi * gram_satis) + satis_ek:,.2f}",
             }
 
-        data.append(sar_item("stl2",  "E. Çeyrek", satis_ek=10))
-        data.append(sar_item("stl4",  "E. Yarım",  satis_ek=20))
-        data.append(sar_item("stl6",  "E. Teklik", satis_ek=40))
+        data.append(sar_item("stl2",  "E. Çeyrek", satis_ek=20))
+        data.append(sar_item("stl4",  "E. Yarım",  satis_ek=40))
+        data.append(sar_item("stl6",  "E. Teklik", satis_ek=80))
 
         # Ata Lira: senin mantığını korudum (alış -50, satış +100)
         ata = sar_item("stl10", "E. Ata Lira", satis_ek=100, alis_ek=-50)
@@ -138,6 +138,7 @@ def gold_prices():
         # JSON değil / beklenmeyen format vb.
         print("Gold endpoint error:", repr(e))
         return jsonify({"error": "Upstream veri formatı hatası", "detail": str(e)}), 502
+
 
 
 
