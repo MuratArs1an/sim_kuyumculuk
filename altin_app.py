@@ -101,7 +101,7 @@ def gold_prices():
 
         data.append({"urun": "Gram Altın (24 Ayar)",
                      "alis": f"{gram_alis * 0.995-10:,.2f}",
-                     "satis": f"{gram_satis * 1.004 + 20:,.2f}"})
+                     "satis": f"{gram_satis * 1.004 + 100:,.2f}"})
 
         def sar_item(key, fallback_name, satis_ek=0, alis_ek=0):
             item = sar_data.get(key, {}) or {}
@@ -114,17 +114,17 @@ def gold_prices():
                 "satis": f"{(satis_katsayi * gram_satis) + satis_ek:,.2f}",
             }
 
-        data.append(sar_item("stl2",  "E. Çeyrek", satis_ek=20))
-        data.append(sar_item("stl4",  "E. Yarım",  satis_ek=40))
-        data.append(sar_item("stl6",  "E. Teklik", satis_ek=80))
+        data.append(sar_item("stl2",  "E. Çeyrek", satis_ek=150))
+        data.append(sar_item("stl4",  "E. Yarım",  satis_ek=300))
+        data.append(sar_item("stl6",  "E. Teklik", satis_ek=600))
 
         # Ata Lira: senin mantığını korudum (alış -50, satış +200)
-        ata = sar_item("stl10", "E. Ata Lira", satis_ek=100, alis_ek=-50)
+        ata = sar_item("stl10", "E. Ata Lira", satis_ek=200, alis_ek=-50)
         data.append(ata)
 
         data.append({"urun": "22 Ayar Hurda Bilezik",
                      "alis": f"{gram_alis * 0.912 -3 :,.2f}",
-                     "satis": f"{gram_satis * 0.912 + 20:,.2f}"})
+                     "satis": f"{gram_satis * 0.912 + 30:,.2f}"})
 
         _CACHE = {"ts": now, "data": data}
         return jsonify(data)
@@ -138,6 +138,7 @@ def gold_prices():
         # JSON değil / beklenmeyen format vb.
         print("Gold endpoint error:", repr(e))
         return jsonify({"error": "Upstream veri formatı hatası", "detail": str(e)}), 502
+
 
 
 
