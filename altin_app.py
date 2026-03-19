@@ -101,7 +101,7 @@ def gold_prices():
 
         data.append({"urun": "Gram Altın (24 Ayar)",
                      "alis": f"{gram_alis * 0.995:,.2f}",
-                     "satis": f"{gram_satis * 1.004 + 20:,.2f}"})
+                     "satis": f"{gram_satis * 1.010 + 20:,.2f}"})
 
         def sar_item(key, fallback_name, satis_ek=0, alis_ek=0):
             item = sar_data.get(key, {}) or {}
