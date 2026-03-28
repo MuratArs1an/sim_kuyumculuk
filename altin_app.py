@@ -114,9 +114,9 @@ def gold_prices():
                 "satis": f"{(satis_katsayi * gram_satis) + satis_ek:,.2f}",
             }
 
-        data.append(sar_item("stl2",  "E. Çeyrek", satis_ek=100))
-        data.append(sar_item("stl4",  "E. Yarım",  satis_ek=200))
-        data.append(sar_item("stl6",  "E. Teklik", satis_ek=400))
+        data.append(sar_item("stl2",  "E. Çeyrek", satis_ek=1100))
+        data.append(sar_item("stl4",  "E. Yarım",  satis_ek=2200))
+        data.append(sar_item("stl6",  "E. Teklik", satis_ek=4400))
 
         # Ata Lira: senin mantığını korudum (alış -50, satış +200)
         ata = sar_item("stl10", "E. Ata Lira", satis_ek=150, alis_ek=-50)
