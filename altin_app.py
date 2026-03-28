@@ -119,7 +119,7 @@ def gold_prices():
         data.append(sar_item("stl6",  "E. Teklik", satis_ek=4400))
 
         # Ata Lira: senin mantığını korudum (alış -50, satış +200)
-        ata = sar_item("stl10", "E. Ata Lira", satis_ek=150, alis_ek=-50)
+        ata = sar_item("stl10", "E. Ata Lira", satis_ek=1500, alis_ek=-50)
         data.append(ata)
 
         data.append({"urun": "22 Ayar Hurda Bilezik",
